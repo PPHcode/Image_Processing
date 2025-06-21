@@ -7,7 +7,7 @@
 4. Block Averaging
 
 ## Results
-All result images are saved in the `results/` folder.
+All result images are saved in the `Results/` folder.
 
 ## How to Run
 ```bash
