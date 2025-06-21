@@ -13,17 +13,12 @@ plt.title("Original Image")
 plt.axis('off')
 plt.show()
 
+def rotate_image(image, angle):
+    (h, w) = image.shape[:2]
+    center = (w // 2, h // 2)
+    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+    return cv2.warpAffine(image, M, (w, h))
 
-#Task1
-def reduce_intensity_levels(image, n_levels):
-    factor = 256 // n_levels
-    return (image // factor) * factor
-
-# Example: reduce to 4 levels
-reduced = reduce_intensity_levels(image, 4)
-cv2.imwrite("Results/Task1/intensity_reduced_4_levels.png", reduced)
-
-
-
-
-
+for angle in [45, 90]:
+    rotated = rotate_image(image, angle)
+    cv2.imwrite(f"Results/Task3/rotated_{angle}_deg.png", rotated)

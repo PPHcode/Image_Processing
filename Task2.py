@@ -14,16 +14,10 @@ plt.axis('off')
 plt.show()
 
 
-#Task1
-def reduce_intensity_levels(image, n_levels):
-    factor = 256 // n_levels
-    return (image // factor) * factor
+def apply_spatial_average(image, kernel_size):
+    return cv2.blur(image, (kernel_size, kernel_size))
 
-# Example: reduce to 4 levels
-reduced = reduce_intensity_levels(image, 4)
-cv2.imwrite("Results/Task1/intensity_reduced_4_levels.png", reduced)
-
-
-
-
-
+# Test with different sizes
+for size in [3, 10, 20]:
+    blurred = apply_spatial_average(image, size)
+    cv2.imwrite(f"Results/Task2/blurred_{size}x{size}.png", blurred)
